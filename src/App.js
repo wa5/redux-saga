@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-
+import {useSelector,useDispatch} from 'react-redux'
+import {GetUsersFetch} from './action'
 function App() {
+  const users=useSelector(state=>state.myfirtstreducer.users)
+  const dispatch=useDispatch()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+<button onClick={()=>dispatch(GetUsersFetch())}>click me</button>
+<div>Users:{users.map((user =>(<div>{user.name}</div>)))}</div>
+
+
+     {/* <div>count:{count}</div> */}
+     <br/>
+     {/* <button onClick={()=>dispatch(increamentCount())}>click me</button> */}
     </div>
   );
 }
